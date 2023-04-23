@@ -1,0 +1,50 @@
+/****************************************************/
+/* Welcome to HW8 for CSCI 370 Spring 2022 @ UND
+/* This program uses the MIPS Simulator C program
+/* developed by Dr Ronald Marsh to get number (N),
+/* and print incremented count from N to N+10 in ascii.
+/* By Kevin Jordan UND ID: 1301006 kevin.jordan@und.edu
+/* First compile MIPS simulator
+/* gcc MIPSsim.c -o MIPSsim
+/* [Needed files: MIPSsim.c, MIPSsim.h]
+/* Execute by calling ./MIPSsim hw8-KevinJordan.mips
+/****************************************************/
+//Print "Please enter a number: "
+010110.00001.00110.0000000001010000    //Reg6(screen)=Reg1+80(P)
+010110.00001.00110.0000000001101100    //Reg6(screen)=Reg1+108(l)
+010110.00001.00110.0000000001100101    //Reg6(screen)=Reg1+101(e)
+010110.00001.00110.0000000001100001    //Reg6(screen)=Reg1+97(a)
+010110.00001.00110.0000000001110011    //Reg6(screen)=Reg1+115(s)
+010110.00001.00110.0000000001100101    //Reg6(screen)=Reg1+101(e)
+010110.00001.00110.0000000000100000    //Reg6(screen)=Reg1+32(space)
+010110.00001.00110.0000000001100101    //Reg6(screen)=Reg1+101(e)
+010110.00001.00110.0000000001101110    //Reg6(screen)=Reg1+110(n)
+010110.00001.00110.0000000001110100    //Reg6(screen)=Reg1+116(t)
+010110.00001.00110.0000000001100101    //Reg6(screen)=Reg1+101(e)
+010110.00001.00110.0000000001110010    //Reg6(screen)=Reg1+114(r)
+010110.00001.00110.0000000000100000    //Reg6(screen)=Reg1+32(space)
+010110.00001.00110.0000000001100001    //Reg6(screen)=Reg1+97(a)
+010110.00001.00110.0000000000100000    //Reg6(screen)=Reg1+32(space)
+010110.00001.00110.0000000001101110    //Reg6(screen)=Reg1+110(n)
+010110.00001.00110.0000000001110101    //Reg6(screen)=Reg1+117(u)
+010110.00001.00110.0000000001101101    //Reg6(screen)=Reg1+109(m)
+010110.00001.00110.0000000001100010    //Reg6(screen)=Reg1+98(b)
+010110.00001.00110.0000000001100101    //Reg6(screen)=Reg1+101(e)
+010110.00001.00110.0000000001110010    //Reg6(screen)=Reg1+114(r)
+010110.00001.00110.0000000000111010    //Reg6(screen)=Reg1+58(:)
+010110.00001.00110.0000000000100000    //Reg6(screen)=Reg1+32(space)
+//Get input number (char) & save to RAM
+010101.00001.00101.0000000000000000    //Save Reg5 to RAM[0]
+//Compute input number +10 for loop cond & save to RAM
+010100.00001.00001.0000000000000000    //Load from RAM[0] to Reg1
+010110.00001.00010.0000000000001010    //Reg2=Reg1+10
+010101.00011.00010.0000000000000001    //Save Reg2 to RAM[1]
+//Loop to print N to N+10
+010110.00001.00110.0000000000000000    //Reg6(screen)=Reg1+0
+010110.00100.00110.0000000000001010    //Reg6(screen)=Reg4+10(linefeed)
+010000.00001.00010.0000000000110001    //BOEQ if Reg1==Reg2 go to line 49
+010110.00001.00001.0000000000000001    //Reg1=Reg1+1
+000010.0000000000000000000010101100    //JUMP to line 43
+//Wait for key press...
+010101.00100.00101.0000000001100011    //Save Reg5 to RAM[99]
+000011.0000000000000000000000000000    //Jump to exit

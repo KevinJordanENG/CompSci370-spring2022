@@ -1,0 +1,33 @@
+     1                                  ; --------------------------------------------------
+     2                                  ; Welcome to HW2 for CSCI 370 Spring 2022 @ UND
+     3                                  ; Prints text on the screen via the C library (printf).
+     4                                  ; By Kevin Jordan ID: 1301006 kevin.jordan@und.edu
+     5                                  ; Compile with: nasm -f elf64 -l hw2-KevinJordan.lst hw2-KevinJordan.asm
+     6                                  ; Link with: gcc -m64 -no-pie -fno-pie hw2-KevinJordan.o -o hw2-KevinJordan
+     7                                  ; run with: ./hw2-KevinJordan
+     8                                  ; --------------------------------------------------
+     9                                  
+    10                                         extern	printf		; the C function, to be called
+    11                                  
+    12                                          section .data		; Data section, initialized variables
+    13 00000000 4B6576696E204A6F72-     msg:	db "Kevin Jordan", 0	; C string needs 0
+    13 00000009 64616E00           
+    14 0000000D 25730A00                fmt:    db "%s", 10, 0          ; The printf format, "\n",'0'
+    15                                  
+    16                                          section .text           ; Code section.
+    17                                  
+    18                                          global main		; the standard gcc entry point
+    19                                  main:				; the program label for the entry point
+    20 00000000 55                              push    rbp		; set up stack frame, must be alligned
+    21                                  
+    22 00000001 48BF-                   	mov	rdi,fmt
+    22 00000003 [0D00000000000000] 
+    23 0000000B 48BE-                   	mov	rsi,msg
+    23 0000000D [0000000000000000] 
+    24 00000015 B800000000              	mov	rax,0		; or can be  xor  rax,rax
+    25 0000001A E8(00000000)                    call    printf		; Call C function
+    26                                  
+    27 0000001F 5D                      	pop	rbp		; restore stack
+    28                                  
+    29 00000020 B800000000              	mov	rax,0		; normal, no error, return value
+    30 00000025 C3                      	ret			; return
